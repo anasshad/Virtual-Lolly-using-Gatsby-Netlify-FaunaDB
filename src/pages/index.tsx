@@ -1,4 +1,6 @@
 import React from "react"
+import { useQuery, useMutation } from "@apollo/client"
+import gql from "graphql-tag"
 
 //components
 import Lolly from "../components/lolly"
@@ -6,7 +8,30 @@ import Lolly from "../components/lolly"
 //styling
 import "./styles.css"
 
+const ADD_LOLLY = gql`
+  mutation(
+    $cl1: String!
+    $cl2: String!
+    $cl3: String!
+    $to: String!
+    $msg: String!
+    $from: String!
+  ) {
+    addLolly(cl1: $cl1, cl2: $cl2, cl3: $cl3, to: $to, msg: $msg, from: $from) {
+      cl1
+      cl2
+      cl3
+      to
+      from
+      msg
+      link
+    }
+  }
+`
+
 export default function App() {
+  const [addLolly] = useMutation(ADD_LOLLY)
+
   const [cl1, setCl1] = React.useState<string>("#ae7d8f")
   const [cl2, setCl2] = React.useState<string>("#3aef4e")
   const [cl3, setCl3] = React.useState<string>("#a79c5d")
@@ -16,8 +41,20 @@ export default function App() {
   const fromField = React.useRef(null)
 
   const handleSubmit = () => {
-      const toRef = toField.current;
-    console.log(toRef.value)
+    const toRef = toField.current
+    const msgRef = msgField.current
+    const fromRef = fromField.current
+
+    addLolly({
+      variables: {
+        cl1,
+        cl2,
+        cl3,
+        to: toRef.value,
+        from: fromRef.value,
+        msg: msgRef.value,
+      },
+    })
   }
 
   return (

@@ -1,6 +1,7 @@
 import React from "react"
 import { useQuery, useMutation } from "@apollo/client"
 import gql from "graphql-tag"
+import {Redirect} from '@reach/router'
 
 //components
 import Lolly from "../components/lolly"
@@ -30,11 +31,12 @@ const ADD_LOLLY = gql`
 `
 
 export default function App() {
-  const [addLolly] = useMutation(ADD_LOLLY)
+  const [addLolly, {loading}] = useMutation(ADD_LOLLY)
 
   const [cl1, setCl1] = React.useState<string>("#ae7d8f")
   const [cl2, setCl2] = React.useState<string>("#3aef4e")
   const [cl3, setCl3] = React.useState<string>("#a79c5d")
+  const [update, setUpdate] = React.useState(undefined)
 
   const toField = React.useRef(null)
   const msgField = React.useRef(null)
@@ -54,7 +56,15 @@ export default function App() {
         from: fromRef.value,
         msg: msgRef.value,
       },
+      update: (proxy, mutationResult) => {
+      console.log('mutationResult: ', mutationResult);
+      setUpdate(mutationResult)
+    },
     })
+  }
+
+  if(loading){
+    return <div>loading</div>
   }
 
   return (
@@ -90,6 +100,9 @@ export default function App() {
           <button onClick={handleSubmit}>Send Lolly</button>
         </div>
       </div>
+      {
+        update !== undefined ? <Redirect to={`/lolly/${update.data.addLolly.link}`}/> : null
+      }
     </div>
   )
 }

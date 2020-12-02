@@ -58,6 +58,17 @@ const resolvers = {
         console.log(error)
       }
     },
+    lollyByLink: async (root, args, context) => {
+      try {
+        console.log('args: ', args)
+        const result = await client.query(
+          q.Get(q.Match(q.Index('lollies_by_link'), args.link))
+        )        
+        return result.data;
+      } catch (error) {
+        console.log(error)
+      }
+    }
   },
   Mutation: {
     addLolly: async (_, { cl1, cl2, cl3, to, from, msg }) => {

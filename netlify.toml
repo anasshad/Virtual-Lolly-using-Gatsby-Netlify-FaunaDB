@@ -5,3 +5,7 @@
     functions = "functions/"
 
     command = "yarn build"
+
+[[plugins]]
+    
+    package = "@netlify/plugin-functions-install-core"

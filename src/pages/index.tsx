@@ -57,8 +57,14 @@ export default function App() {
         msg: msgRef.value,
       },
       update: (proxy, mutationResult) => {
-      console.log('mutationResult: ', mutationResult);
-      setUpdate(mutationResult)
+        fetch('https://api.netlify.com/build_hooks/5fca41367968cc0e29eb8ce9', {
+          method: 'post',
+          body: JSON.stringify({})
+        }).then(function(response) {
+          if(response.status === 200){
+            setUpdate(mutationResult)
+          }
+        })
     },
     })
   }

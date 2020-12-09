@@ -16,7 +16,7 @@ const Preview = ({ location }) => {
     })
   }, [])
 
-  if (location.state.data) {
+  if (location.state !== undefined) {
     const { cl1, cl2, cl3, to, from, msg, link } = location.state.data
 
     return (

@@ -68,7 +68,7 @@ module.exports = (data) => `
             <div id="message" class="message">${data.msg}</div>
             <p id="from" class="from">— ${data.from}</p>
           </div>
-          <p class="bytheway">${data.to} made this virtual lolly for you. You can <a href="/create">make your own</a> to send to a friend who deserve some sugary treat which won't rot their teeth...</p>
+          <p class="bytheway">${data.to} made this virtual lolly for you. You can <a href="/create_lolly">make your own</a> to send to a friend who deserve some sugary treat which won't rot their teeth...</p>
         </div>
       </div>
       

@@ -3,6 +3,8 @@ import { Link } from "gatsby"
 
 import Lolly from "../components/lolly"
 
+import "./styles.css"
+
 export default function App() {
   return (
     <div>

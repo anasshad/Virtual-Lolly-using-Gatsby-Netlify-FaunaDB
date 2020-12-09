@@ -9,3 +9,15 @@
 [[plugins]]
     
     package = "@netlify/plugin-functions-install-core"
+
+# unfound lollies should proxy to the API directly
+[[redirects]]
+  from = "/lolly/*"
+  to = "/.netlify/functions/showLolly?id=:splat"
+  status = 302
+
+# Real 404s can just go directly here:
+[[redirects]]
+  from = "/*"
+  to = "/melted/index.html"
+  status = 404

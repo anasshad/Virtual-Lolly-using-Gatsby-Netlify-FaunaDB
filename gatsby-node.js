@@ -7,8 +7,14 @@ var client = new faunadb.Client({
 })
 
 exports.createPages = async ({ graphql, actions }) => {
-  const { createPage } = actions
+  const { createPage, createRedirect } = actions
   const lollyTemplate = path.resolve(`src/templates/lolly.tsx`)
+
+  createRedirect({
+    fromPath: "/lolly/*",
+    toPath: "/.netlify/functions/showLolly?id=:splat",
+    isPermanent: false
+  })
 
   try {
     const result = await client.query(

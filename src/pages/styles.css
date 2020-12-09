@@ -3,6 +3,14 @@
 body {
   text-align: center;
   font-family: "Poppins", sans-serif;
+  background-color: #f0b1b6;
+}
+
+input,
+textarea {
+  background-color: #f0b1b6;
+  border: 1px solid gray;
+  padding: 5px;
 }
 
 .App {
@@ -24,8 +32,21 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border: 1px solid #aaa;
+  /* border: 1px solid #aaa; */
   padding: 1em;
+  background: #e8868e;
+  box-shadow: 1px 3px 3px 4px grey;
+}
+
+.message-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* border: 1px solid #aaa; */
+  padding: 1em;
+  background: #e8868e;
+  box-shadow: 1px 3px 3px 4px grey;
+  color: white;
 }
 
 .form-container textarea {
@@ -34,4 +55,12 @@ body {
 
 .form-container input {
   margin: 1em 0;
+}
+
+.button7 {
+  background-color: "#e4717a";
+  color: "white";
+  padding: "5px 10px";
+  text-decoration: "none";
+  border-radius: "5px";
 }

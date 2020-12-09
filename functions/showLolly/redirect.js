@@ -4,6 +4,9 @@ module.exports = (data) => `
 <html lang="en">
   <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="/css/styles.css">
     <style>
+      body{
+        background-color: #f0b1b6;
+      }
       .lollyTop {
         fill: ${data.cl1};
       }
@@ -20,9 +23,8 @@ module.exports = (data) => `
     <div class="container">
       <header>
         <h1 class="title">
-          <a href="/">virtual lollies</a>
+          <a href="https://virtual-lolly-anasshad.netlify.app">Virtual Lollies</a>
         </h1>
-        <p class="subtitle">because we all know someone<br>who deserves some sugar.</p>
       </header>
       <div class="lolly">
         <div class="giftLolly">
@@ -60,7 +62,7 @@ module.exports = (data) => `
           </svg>
         </div>
         <div class="info">
-          <p class="share">Your Lolly is freezing. Share it with this link: <pre>https://vlolly.net/</pre></p>
+          <p class="share">Your Lolly is freezing. Share it with this link: <pre>https://virtual-lolly-anasshad.netlify.app/lolly/${data.link}</pre></p>
           <div class="details">
             <p id="recipient" class="recipient">${data.to}</p>
             <div id="message" class="message">${data.msg}</div>
@@ -69,14 +71,7 @@ module.exports = (data) => `
           <p class="bytheway">${data.to} made this virtual lolly for you. You can <a href="/create">make your own</a> to send to a friend who deserve some sugary treat which won't rot their teeth...</p>
         </div>
       </div>
-      <footer>
-        <p>
-          Built and hosted with <a href="https://netlify.com?utm_source=vlolly&utm_medium=staticfirst-pnh&utm_campaign=devex">Netlify</a> by <a href="https://twitter.com/philhawksworth">Phil Hawksworth</a>
-        </p>
-        <p>
-          Read about how and why <a href="https://css-tricks.com/static-first-pre-generated-jamstack-sites-with-serverless-rendering-as-a-fallback/">on CSS-Tricks</a>.
-        </p>
-      </footer>
+      
     </div>
   </body>
 </html>`;

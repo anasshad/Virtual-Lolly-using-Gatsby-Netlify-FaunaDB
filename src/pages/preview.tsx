@@ -7,7 +7,16 @@ import Lolly from "../components/lolly"
 import "./styles.css"
 
 const Preview = ({ location }) => {
-  if (location) {
+  React.useEffect(() => {
+    fetch("https://api.netlify.com/build_hooks/5fca41367968cc0e29eb8ce9", {
+      method: "post",
+      body: JSON.stringify({}),
+    }).then(function (response) {
+      console.log("Build Triggered")
+    })
+  }, [])
+
+  if (location.state.data) {
     const { cl1, cl2, cl3, to, from, msg, link } = location.state.data
 
     return (
